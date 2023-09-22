@@ -2,7 +2,7 @@
 
 ##
 ```sh
-SELECT CONCAT(QUOTE(user),'@',QUOTE(host)) UserAccount FROM mysql.user;
+SELECT CONCAT(QUOTE(user),'@',QUOTE(host)) UserAccount FROM mysql.user;  (LISTANDO USERS)
 
 CREATE USER 'teste'@'localhost';
 
