@@ -1,30 +1,24 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-# CON_MY.py
-
-"""
-  Nesse arquivo, vamos fazer um teste de
-  conexão ao banco de dados 
-  do MySQL.
-
-
-  Modificado em 27 de março de 2017
-  por Vitor Mazuco (vitor.mazuco@gmail.com)
-"""
+import mysql.connector
 
 try:
-	import MySQLdb
-except:
-    sys.exit("[!] Por favor, intale a biblioteca mysqldb com o comando: sudo apt-get install python-mysqldb")
+    # Conecta ao banco de dados
+    connection = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="123456",
+        database="teste"
+    )
 
-try:
-	con = MySQLdb.connect(host="127.0.0.1", user="root", db="projeto", passwd="123456") 
-	cur = con.cursor()
-	print "Feita a conexão com o banco de dados"
+    if connection.is_connected():
+        print("Conexão ao MySQL bem-sucedida")
 
-except Exception as e:
-	print "Erro: %s"%e
+    # Execute suas consultas e operações aqui
+
+except mysql.connector.Error as error:
+    print("Erro ao conectar-se ao MySQL: {}".format(error))
+
 finally:
-	print "Finalizando a conexão com o banco de dados";
-	cur.close()
-	con.close()
+    # Feche a conexão quando terminar
+    if connection.is_connected():
+        connection.close()
+        print("Conexão ao MySQL fechada")
