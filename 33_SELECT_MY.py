@@ -12,9 +12,9 @@ import mysql.connector
 
 try:
     con = mysql.connector.connect(
-        host="127.0.0.1",
+        host="localhost",
         user="root",
-        database="projeto",
+        database="teste",
         password="123456"
     )
     cur = con.cursor()
