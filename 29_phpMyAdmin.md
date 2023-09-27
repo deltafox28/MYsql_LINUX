@@ -3,7 +3,7 @@
 ##
 ```sh
 apt-get update
-apt-get install phpmyadmin php-mbstring php-gettext
+apt-get install phpmyadmin
 
 phpenmod mbstring
 
