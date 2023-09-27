@@ -6,26 +6,26 @@
   Nesse arquivo, vamos fazer um teste de
   conexão ao banco de dados 
   do MySQL.
-
-
-  Modificado em 27 de março de 2017
-  por Vitor Mazuco (vitor.mazuco@gmail.com)
 """
 
-try:
-	import MySQLdb
-except:
-    sys.exit("[!] Por favor, intale a biblioteca mysqldb com o comando: sudo apt-get install python-mysqldb")
+import sys
+import mysql.connector
 
 try:
-	con = MySQLdb.connect(host="127.0.0.1", user="root", db="projeto", passwd="123456") 
-	cur = con.cursor()
-	cur.execute("insert into cliente(id,nome,cpf) values('1', 'vitor','333.333.222.555')
-	con.commit() # Segue mesma lógica do Postgre, tem que gravar as alteações com o commit
-	print "Registro criado com sucesso"
-except Exception as e:
-	print "Erro: %s"%e
+    con = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        database="teste",
+        password="123456"
+    )
+    cur = con.cursor()
+    cur.execute("INSERT INTO cliente(id, nome, cpf) VALUES (1, 'vitor', '333.333.222.555')")
+    con.commit()  # Semelhante ao commit em outros bancos de dados
+    print("Registro criado com sucesso")
+except mysql.connector.Error as e:
+    print("Erro:", e)
 finally:
-	print "Finalizando a conexão com o banco de dados"
-	cur.close()
-	con.close()
+    print("Finalizando a conexão com o banco de dados")
+    if con.is_connected():
+        cur.close()
+        con.close()
