@@ -25,6 +25,6 @@ try:
 except Exception as e:
 	print "Erro: %s"%e
 finally:
-	print "Finalizando a conexão com o banco de dados"
+	print "Finalizando a conexão com o banco de dados";
 	cur.close()
 	con.close()
