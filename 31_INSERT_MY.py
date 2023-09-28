@@ -19,7 +19,7 @@ try:
         password="123456"
     )
     cur = con.cursor()
-    cur.execute("INSERT INTO cliente(id, nome, cpf) VALUES (1, 'vitor', '333.333.222.555')")
+    cur.execute("INSERT INTO cliente(id, nome, cpf) VALUES (1, 'vitor', '333.333.222.55')")
     con.commit()  # Semelhante ao commit em outros bancos de dados
     print("Registro criado com sucesso")
 except mysql.connector.Error as e:
